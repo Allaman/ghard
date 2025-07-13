@@ -1,0 +1,46 @@
+---
+project_name: ghard
+env:
+  - CGO_ENABLED=0
+builds:
+  - binary: ghard
+    id: ghard
+    main: ./
+    ldflags:
+      - -X main.Version={{ .Version }}
+    targets:
+      - darwin_amd64
+      - darwin_arm64
+      - linux_amd64
+      - linux_arm64
+      - windows_amd64
+archives:
+  - formats: binary
+    name_template: "{{ .Binary }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+checksum:
+  algorithm: sha256
+changelog:
+  sort: asc
+  use: github
+  groups:
+    - title: Dependency updates
+      regexp: '^.*?(feat|fix|chore)\(deps\)!?:.+$'
+      order: 300
+    - title: "New Features"
+      regexp: '^.*?feat(\(.+\))??!?:.+$'
+      order: 100
+    - title: "Bug fixes"
+      regexp: '^.*?(fix|refactor)(\(.+\))??!?:.+$'
+      order: 200
+    - title: "Documentation updates"
+      regexp: ^.*?docs?(\(.+\))??!?:.+$
+      order: 400
+    - title: "Build process updates"
+      regexp: ^.*?(build|ci)(\(.+\))??!?:.+$
+      order: 400
+    - title: Other work
+      order: 9999
+release:
+  name_template: "{{ .Version }}"
+  footer: |
+    **Full Changelog**: https://github.com/allaman/ghard/compare/{{ .PreviousTag }}...{{ .Tag }}

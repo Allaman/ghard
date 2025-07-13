@@ -1,0 +1,7 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Bob Wilson
+N:Wilson;Bob;;;
+EMAIL;TYPE=HOME:bob@example.com
+BDAY:1985-12-25
+END:VCARD

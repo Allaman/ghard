@@ -1,0 +1,8 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Jane Smith
+N:Smith;Jane;;;
+EMAIL;TYPE=WORK:jane@example.com
+TEL;TYPE=CELL:+0987654321
+ORG:Another Corp
+END:VCARD

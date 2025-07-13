@@ -1,0 +1,7 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Alice Brown
+N:Brown;Alice;;;
+EMAIL:alice@example.com
+BDAY:1992-03-10
+END:VCARD

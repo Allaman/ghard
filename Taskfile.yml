@@ -1,0 +1,63 @@
+---
+version: "3"
+
+tasks:
+  default:
+    silent: true
+    cmds:
+      - task -l
+
+  install:
+    desc: Install App
+    cmds:
+      - task: check
+      - go install -ldflags "-s -w -X github.com/allaman/ghard/internal/version.Version=0.1.0" ./cmd/ghard/
+
+  check:
+    desc: Run various checks
+    cmds:
+      - task: fmt
+      - task: test
+      # - task: lint
+      - task: vet
+      - task: build
+
+  build:
+    desc: Build App
+    cmds:
+      - go build -o ghard ./cmd/ghard/
+
+  run:
+    desc: Run App
+    cmds:
+      - go build -o ghard ./cmd/ghard/ && ./ghard
+
+  lint:
+    desc: Run linter
+    cmds:
+      - golangci-lint run ./...
+
+  fmt:
+    desc: Run formatter
+    cmds:
+      - go fmt ./...
+
+  upgrade-deps:
+    desc: Upgrade all dependencies
+    cmds:
+      - go get -u ./...
+
+  test:
+    desc: Run go test
+    cmds:
+      - go test ./...
+
+  vet:
+    desc: Run go vet
+    cmds:
+      - go vet ./...
+
+  vuln:
+    desc: Check for vulnerabilities
+    cmds:
+      - govulncheck .

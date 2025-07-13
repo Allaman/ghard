@@ -1,0 +1,7 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Acme Corporation
+ORG:Acme Corporation
+EMAIL:info@acme.com
+TEL:+1555000123
+END:VCARD
