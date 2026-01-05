@@ -38,9 +38,6 @@ chmod +x ghard
 sudo mv ghard /usr/local/bin/
 ```
 
-**Windows:**
-Download the `exe` from the releases page and rename it to `ghard.exe`. Place it in a directory in your PATH.
-
 ### From Source
 
 ```bash
