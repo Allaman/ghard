@@ -60,4 +60,4 @@ tasks:
   vuln:
     desc: Check for vulnerabilities
     cmds:
-      - govulncheck .
+      - govulncheck ./...
