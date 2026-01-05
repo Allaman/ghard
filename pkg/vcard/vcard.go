@@ -1,3 +1,4 @@
+// Package vcard provides vcard parsing for ghard
 package vcard
 
 import (
