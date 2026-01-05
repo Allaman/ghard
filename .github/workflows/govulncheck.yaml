@@ -9,6 +9,9 @@ on:
 jobs:
   govulncheck:
     runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+      contents: read
     steps:
       - uses: golang/govulncheck-action@v1
         with:
