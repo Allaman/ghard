@@ -53,8 +53,10 @@ sudo mv ghard /usr/local/bin/
 ```bash
 git clone https://github.com/allaman/ghard
 cd ghard
-go build -o ghard
+go build -o ghard ./cmd/ghard/
 ```
+
+Have a look at the provided [Taskfile](./Taskfile.yml) for shortcuts.
 
 ## Configuration
 
