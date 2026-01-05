@@ -1,3 +1,4 @@
+// Package config provides configuration handling for ghard
 package config
 
 import (
@@ -137,7 +138,7 @@ func Load() (*Config, error) {
 // Validate checks the configuration for common issues and provides helpful error messages
 func (c *Config) Validate() error {
 	if len(c.AddressBooks) == 0 {
-		return fmt.Errorf("no address books configured. Please add at least one [addressbook.name] section to your config file")
+		return errors.New("no address books configured. Please add at least one [addressbook.name] section to your config file")
 	}
 
 	var validationErrors []string
@@ -175,11 +176,11 @@ func (c *Config) validateAddressBook(name string, ab AddressBook) error {
 		}
 	}
 
-	if file, err := os.Open(expandedPath); err != nil {
+	file, err := os.Open(expandedPath)
+	if err != nil {
 		return fmt.Errorf("address book '%s': directory is not readable: %s (%w)", name, expandedPath, err)
-	} else {
-		file.Close()
 	}
+	file.Close()
 
 	return nil
 }

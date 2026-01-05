@@ -75,17 +75,17 @@ func TestLoadConfig(t *testing.T) {
 	personalDir := filepath.Join(tempDir, "contacts", "personal")
 	workDir := filepath.Join(tempDir, "work")
 
-	err := os.MkdirAll(configDir, 0755)
+	err := os.MkdirAll(configDir, 0o755)
 	if err != nil {
 		t.Fatalf("Failed to create config directory: %v", err)
 	}
 
-	err = os.MkdirAll(personalDir, 0755)
+	err = os.MkdirAll(personalDir, 0o755)
 	if err != nil {
 		t.Fatalf("Failed to create personal contacts directory: %v", err)
 	}
 
-	err = os.MkdirAll(workDir, 0755)
+	err = os.MkdirAll(workDir, 0o755)
 	if err != nil {
 		t.Fatalf("Failed to create work directory: %v", err)
 	}
@@ -98,7 +98,7 @@ path = "~/contacts/personal"
 path = "` + workDir + `"
 `
 
-	err = os.WriteFile(configPath, []byte(configContent), 0644)
+	err = os.WriteFile(configPath, []byte(configContent), 0o644)
 	if err != nil {
 		t.Fatalf("Failed to write config file: %v", err)
 	}
@@ -153,7 +153,7 @@ func TestValidateConfig(t *testing.T) {
 	t.Run("valid config with existing directories", func(t *testing.T) {
 		tempDir := t.TempDir()
 		contactsDir := filepath.Join(tempDir, "contacts")
-		err := os.MkdirAll(contactsDir, 0755)
+		err := os.MkdirAll(contactsDir, 0o755)
 		if err != nil {
 			t.Fatalf("Failed to create contacts directory: %v", err)
 		}
@@ -218,7 +218,7 @@ func TestValidateConfig(t *testing.T) {
 	t.Run("path is file not directory", func(t *testing.T) {
 		tempDir := t.TempDir()
 		filePath := filepath.Join(tempDir, "notdir.txt")
-		err := os.WriteFile(filePath, []byte("test"), 0644)
+		err := os.WriteFile(filePath, []byte("test"), 0o644)
 		if err != nil {
 			t.Fatalf("Failed to create test file: %v", err)
 		}
@@ -262,7 +262,7 @@ func TestValidateConfig(t *testing.T) {
 	t.Run("tilde expansion in validation", func(t *testing.T) {
 		tempDir := t.TempDir()
 		contactsDir := filepath.Join(tempDir, "contacts")
-		err := os.MkdirAll(contactsDir, 0755)
+		err := os.MkdirAll(contactsDir, 0o755)
 		if err != nil {
 			t.Fatalf("Failed to create contacts directory: %v", err)
 		}
@@ -287,7 +287,7 @@ func TestLoadConfigWithValidation(t *testing.T) {
 	t.Run("config with nonexistent path fails validation", func(t *testing.T) {
 		tempDir := t.TempDir()
 		configDir := filepath.Join(tempDir, ".config", "ghard")
-		err := os.MkdirAll(configDir, 0755)
+		err := os.MkdirAll(configDir, 0o755)
 		if err != nil {
 			t.Fatalf("Failed to create config directory: %v", err)
 		}
@@ -297,7 +297,7 @@ func TestLoadConfigWithValidation(t *testing.T) {
 path = "/nonexistent/path"
 `
 
-		err = os.WriteFile(configPath, []byte(configContent), 0644)
+		err = os.WriteFile(configPath, []byte(configContent), 0o644)
 		if err != nil {
 			t.Fatalf("Failed to write config file: %v", err)
 		}
@@ -320,12 +320,12 @@ path = "/nonexistent/path"
 		configDir := filepath.Join(tempDir, ".config", "ghard")
 		contactsDir := filepath.Join(tempDir, "contacts")
 
-		err := os.MkdirAll(configDir, 0755)
+		err := os.MkdirAll(configDir, 0o755)
 		if err != nil {
 			t.Fatalf("Failed to create config directory: %v", err)
 		}
 
-		err = os.MkdirAll(contactsDir, 0755)
+		err = os.MkdirAll(contactsDir, 0o755)
 		if err != nil {
 			t.Fatalf("Failed to create contacts directory: %v", err)
 		}
@@ -335,7 +335,7 @@ path = "/nonexistent/path"
 path = "` + contactsDir + `"
 `
 
-		err = os.WriteFile(configPath, []byte(configContent), 0644)
+		err = os.WriteFile(configPath, []byte(configContent), 0o644)
 		if err != nil {
 			t.Fatalf("Failed to write config file: %v", err)
 		}

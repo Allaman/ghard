@@ -18,12 +18,12 @@ func TestIntegrationListContacts(t *testing.T) {
 	configDir := filepath.Join(tempDir, ".config", "ghard")
 	contactsDir := filepath.Join(tempDir, "contacts")
 
-	err := os.MkdirAll(configDir, 0755)
+	err := os.MkdirAll(configDir, 0o755)
 	if err != nil {
 		t.Fatalf("Failed to create config directory: %v", err)
 	}
 
-	err = os.MkdirAll(contactsDir, 0755)
+	err = os.MkdirAll(contactsDir, 0o755)
 	if err != nil {
 		t.Fatalf("Failed to create contacts directory: %v", err)
 	}
@@ -32,7 +32,7 @@ func TestIntegrationListContacts(t *testing.T) {
 path = "` + contactsDir + `"
 `
 	configPath := filepath.Join(configDir, "ghard.toml")
-	err = os.WriteFile(configPath, []byte(configContent), 0644)
+	err = os.WriteFile(configPath, []byte(configContent), 0o644)
 	if err != nil {
 		t.Fatalf("Failed to write config file: %v", err)
 	}
@@ -49,7 +49,7 @@ ADR:;;Test Street;Test City;TS;12345;Test Country
 END:VCARD`
 
 	vcardPath := filepath.Join(contactsDir, "test.vcf")
-	err = os.WriteFile(vcardPath, []byte(vcardContent), 0644)
+	err = os.WriteFile(vcardPath, []byte(vcardContent), 0o644)
 	if err != nil {
 		t.Fatalf("Failed to write vCard file: %v", err)
 	}
@@ -97,12 +97,12 @@ func TestIntegrationListBirthdays(t *testing.T) {
 	configDir := filepath.Join(tempDir, ".config", "ghard")
 	contactsDir := filepath.Join(tempDir, "contacts")
 
-	err := os.MkdirAll(configDir, 0755)
+	err := os.MkdirAll(configDir, 0o755)
 	if err != nil {
 		t.Fatalf("Failed to create config directory: %v", err)
 	}
 
-	err = os.MkdirAll(contactsDir, 0755)
+	err = os.MkdirAll(contactsDir, 0o755)
 	if err != nil {
 		t.Fatalf("Failed to create contacts directory: %v", err)
 	}
@@ -111,7 +111,7 @@ func TestIntegrationListBirthdays(t *testing.T) {
 path = "` + contactsDir + `"
 `
 	configPath := filepath.Join(configDir, "ghard.toml")
-	err = os.WriteFile(configPath, []byte(configContent), 0644)
+	err = os.WriteFile(configPath, []byte(configContent), 0o644)
 	if err != nil {
 		t.Fatalf("Failed to write config file: %v", err)
 	}
@@ -119,17 +119,17 @@ path = "` + contactsDir + `"
 	// Copy testdata files to temp directory
 	testdataDir := "testdata"
 	files := []string{"john.vcf", "jane.vcf", "alice.vcf"}
-	
+
 	for _, file := range files {
 		srcPath := filepath.Join(testdataDir, file)
 		dstPath := filepath.Join(contactsDir, file)
-		
+
 		srcData, err := os.ReadFile(srcPath)
 		if err != nil {
 			t.Fatalf("Failed to read testdata file %s: %v", file, err)
 		}
-		
-		err = os.WriteFile(dstPath, srcData, 0644)
+
+		err = os.WriteFile(dstPath, srcData, 0o644)
 		if err != nil {
 			t.Fatalf("Failed to write test file %s: %v", file, err)
 		}
@@ -208,12 +208,12 @@ func TestIntegrationExportContactsWithFilter(t *testing.T) {
 	configDir := filepath.Join(tempDir, ".config", "ghard")
 	contactsDir := filepath.Join(tempDir, "contacts")
 
-	err := os.MkdirAll(configDir, 0755)
+	err := os.MkdirAll(configDir, 0o755)
 	if err != nil {
 		t.Fatalf("Failed to create config directory: %v", err)
 	}
 
-	err = os.MkdirAll(contactsDir, 0755)
+	err = os.MkdirAll(contactsDir, 0o755)
 	if err != nil {
 		t.Fatalf("Failed to create contacts directory: %v", err)
 	}
@@ -222,7 +222,7 @@ func TestIntegrationExportContactsWithFilter(t *testing.T) {
 path = "` + contactsDir + `"
 `
 	configPath := filepath.Join(configDir, "ghard.toml")
-	err = os.WriteFile(configPath, []byte(configContent), 0644)
+	err = os.WriteFile(configPath, []byte(configContent), 0o644)
 	if err != nil {
 		t.Fatalf("Failed to write config file: %v", err)
 	}
@@ -230,17 +230,17 @@ path = "` + contactsDir + `"
 	// Copy a couple testdata files
 	testdataDir := "testdata"
 	files := []string{"john.vcf", "jane.vcf"}
-	
+
 	for _, file := range files {
 		srcPath := filepath.Join(testdataDir, file)
 		dstPath := filepath.Join(contactsDir, file)
-		
+
 		srcData, err := os.ReadFile(srcPath)
 		if err != nil {
 			t.Fatalf("Failed to read testdata file %s: %v", file, err)
 		}
-		
-		err = os.WriteFile(dstPath, srcData, 0644)
+
+		err = os.WriteFile(dstPath, srcData, 0o644)
 		if err != nil {
 			t.Fatalf("Failed to write test file %s: %v", file, err)
 		}

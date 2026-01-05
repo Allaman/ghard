@@ -1,6 +1,7 @@
 package vcard
 
 import (
+	"errors"
 	"fmt"
 	"io"
 	"io/fs"
@@ -113,7 +114,6 @@ func loadContactsFromPath(path string) ([]Contact, error) {
 		processedCount++
 		return nil
 	})
-
 	if err != nil {
 		return nil, fmt.Errorf("error scanning directory %s: %w", path, err)
 	}
@@ -229,7 +229,7 @@ func processVCardFile(filePath string, contacts *[]Contact) error {
 	}
 
 	if fileContacts == 0 {
-		return fmt.Errorf("no valid contacts found in file")
+		return errors.New("no valid contacts found in file")
 	}
 
 	return nil
@@ -341,7 +341,7 @@ func getFieldType(params map[string][]string) string {
 	return ""
 }
 
-// Helper functions for display formatting
+// GetPrimaryEmail is a helper functions for display formatting
 func (c *Contact) GetPrimaryEmail() string {
 	if len(c.Emails) == 0 {
 		return ""

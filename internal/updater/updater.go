@@ -1,3 +1,4 @@
+// Package updater provides a self-update feature for ghard
 package updater
 
 import (

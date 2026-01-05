@@ -67,7 +67,7 @@ ADR:;;123 Main St;Springfield;IL;62701;USA
 END:VCARD`
 
 	vcard1Path := filepath.Join(tempDir, "john.vcf")
-	err := os.WriteFile(vcard1Path, []byte(vcard1Content), 0644)
+	err := os.WriteFile(vcard1Path, []byte(vcard1Content), 0o644)
 	if err != nil {
 		t.Fatalf("Failed to create test vCard file: %v", err)
 	}
@@ -81,13 +81,13 @@ ORG:Another Corp
 END:VCARD`
 
 	vcard2Path := filepath.Join(tempDir, "jane.vcf")
-	err = os.WriteFile(vcard2Path, []byte(vcard2Content), 0644)
+	err = os.WriteFile(vcard2Path, []byte(vcard2Content), 0o644)
 	if err != nil {
 		t.Fatalf("Failed to create second test vCard file: %v", err)
 	}
 
 	nonVcardPath := filepath.Join(tempDir, "readme.txt")
-	err = os.WriteFile(nonVcardPath, []byte("This is not a vCard"), 0644)
+	err = os.WriteFile(nonVcardPath, []byte("This is not a vCard"), 0o644)
 	if err != nil {
 		t.Fatalf("Failed to create non-vCard file: %v", err)
 	}
@@ -240,7 +240,7 @@ EMAIL:one@example.com
 END:VCARD`
 
 	vcard1Path := filepath.Join(tempDir1, "contact1.vcf")
-	err := os.WriteFile(vcard1Path, []byte(vcard1Content), 0644)
+	err := os.WriteFile(vcard1Path, []byte(vcard1Content), 0o644)
 	if err != nil {
 		t.Fatalf("Failed to create first vCard file: %v", err)
 	}
@@ -252,7 +252,7 @@ EMAIL:two@example.com
 END:VCARD`
 
 	vcard2Path := filepath.Join(tempDir2, "contact2.vcf")
-	err = os.WriteFile(vcard2Path, []byte(vcard2Content), 0644)
+	err = os.WriteFile(vcard2Path, []byte(vcard2Content), 0o644)
 	if err != nil {
 		t.Fatalf("Failed to create second vCard file: %v", err)
 	}
@@ -351,7 +351,7 @@ func TestParseBirthday(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			result := parseBirthday(tt.input)
-			
+
 			if tt.expectValid {
 				if result.IsZero() {
 					t.Errorf("parseBirthday(%q) expected valid time, got zero time", tt.input)

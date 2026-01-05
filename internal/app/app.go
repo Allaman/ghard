@@ -1,3 +1,4 @@
+// Package app provides the main business logic for ghard
 package app
 
 import (
@@ -46,8 +47,7 @@ type CLI struct {
 		Filter  []string `arg:"" optional:"" help:"Filter contacts by string (case insensitive)"`
 	} `cmd:"" help:"List contacts with birthdays"`
 
-	Addressbooks struct {
-	} `cmd:"" help:"List configured address books"`
+	Addressbooks struct{} `cmd:"" help:"List configured address books"`
 
 	Export struct {
 		Format    string   `help:"Export format (csv, json)" enum:"csv,json" default:"csv"`
@@ -56,11 +56,9 @@ type CLI struct {
 		Filter    []string `arg:"" optional:"" help:"Filter contacts by string (case insensitive)"`
 	} `cmd:"" help:"Export contacts to various formats"`
 
-	Update struct {
-	} `cmd:"" help:"Update ghard to the latest version"`
+	Update struct{} `cmd:"" help:"Update ghard to the latest version"`
 
-	Version struct {
-	} `cmd:"" help:"Show version information"`
+	Version struct{} `cmd:"" help:"Show version information"`
 }
 
 // App represents the application instance
@@ -233,15 +231,13 @@ func formatNameForDisplay(contact vcard.Contact) string {
 			givenParts = append(givenParts, contact.Suffix)
 		}
 
+		if len(givenParts) > 0 && len(parts) > 0 {
+			return strings.Join(parts, "") + ", " + strings.Join(givenParts, " ")
+		}
 		if len(givenParts) > 0 {
-			if len(parts) > 0 {
-				return strings.Join(parts, "") + ", " + strings.Join(givenParts, " ")
-			} else {
-				// Only given name, no family name
-				return strings.Join(givenParts, " ")
-			}
-		} else if len(parts) > 0 {
-			// Only family name
+			return strings.Join(givenParts, " ")
+		}
+		if len(parts) > 0 {
 			return strings.Join(parts, "")
 		}
 	}
@@ -287,18 +283,18 @@ func sortContactsByBirthday(contacts []vcard.Contact, reverse bool) {
 		// Compare by month first, then by day
 		monthI := int(timeI.Month())
 		monthJ := int(timeJ.Month())
-		
+
 		if monthI != monthJ {
 			if reverse {
 				return monthI > monthJ
 			}
 			return monthI < monthJ
 		}
-		
+
 		// If months are equal, compare by day
 		dayI := timeI.Day()
 		dayJ := timeJ.Day()
-		
+
 		if reverse {
 			return dayI > dayJ
 		}
@@ -428,7 +424,6 @@ func (a *App) ListPhones(reverse bool, filter []string) error {
 	return nil
 }
 
-// ListBirthdays lists contacts with birthdays
 // GetBirthdayContacts returns all contacts that have birthdays, sorted by month/day
 func (a *App) GetBirthdayContacts(reverse bool, filter []string) ([]vcard.Contact, error) {
 	contacts, err := a.loadAndFilterContacts(filter)

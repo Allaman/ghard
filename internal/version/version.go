@@ -1,3 +1,4 @@
+// Package version provides version output for ghard
 package version
 
 import "fmt"
