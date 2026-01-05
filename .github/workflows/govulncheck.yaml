@@ -6,8 +6,6 @@ on:
     branches: [main]
   schedule:
     - cron: "0 2 * * *"
-concurrency:
-  cancel-in-progress: true
 jobs:
   govulncheck:
     runs-on: ubuntu-latest
