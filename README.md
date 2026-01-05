@@ -3,6 +3,7 @@
 <div align="center">
   <p>
     <img src="https://github.com/Allaman/ghard/actions/workflows/release.yaml/badge.svg" alt="Release"/>
+    <img src="https://github.com/Allaman/ghard/actions/workflows/govulncheck.yaml/badge.svg" alt="Vulnerabilities"/>
     <img src="https://img.shields.io/github/repo-size/Allaman/ghard" alt="size"/>
     <img src="https://img.shields.io/github/issues/Allaman/ghard" alt="issues"/>
     <img src="https://img.shields.io/github/last-commit/Allaman/ghard" alt="last commit"/>
