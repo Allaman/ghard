@@ -13,6 +13,15 @@
 
 A basic Go port of [khard](https://github.com/lucc/khard) - a command-line vCard address book manager.
 
+## Motivation
+
+Though Khard is actively developed, more mature, and has more features, for me, it was often a struggle to get the Python components installed.
+So, I wanted to port the parts that are important to me (reading and (Neo)mutt integration) to a language that I can distribute as a single binary.
+
+> [!INFO]
+> This is by no means a full replacement; it's only a lightweight, easy-to-install (single binary 🚀) option for reading folders with VCF files.
+> Credits to the [authors](https://github.com/lucc/khard?tab=readme-ov-file#authors) of khard.
+
 ## Features
 
 - **Read vCard files** from local directories
@@ -58,9 +67,7 @@ path = "~/contacts/personal"
 path = "/opt/contacts/work"
 ```
 
-Each `[addressbook.name]` section defines an address book with:
-
-- `path`: Directory containing `.vcf` files
+Each `[addressbook.<name>]` section defines an address book with the `path`, a directory containing `.vcf` files.
 
 ## Usage
 
@@ -152,7 +159,7 @@ ghard export john doe --output john_contacts.csv
 
 The default output is tab-separated for easy processing with Unix tools like `cut`, `grep`, `awk`, `sort`, etc.
 
-### Parsable Format
+### Parsable (Email) Format
 
 The email command supports a `--parsable` format compatible with khard:
 
