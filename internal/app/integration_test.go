@@ -55,8 +55,8 @@ END:VCARD`
 	}
 
 	originalHome := os.Getenv("HOME")
-	os.Setenv("HOME", tempDir)
-	defer os.Setenv("HOME", originalHome)
+	t.Setenv("HOME", tempDir)
+	defer t.Setenv("HOME", originalHome)
 
 	cfg, err := config.Load()
 	if err != nil {
@@ -78,7 +78,10 @@ END:VCARD`
 	os.Stdout = old
 
 	var buf bytes.Buffer
-	buf.ReadFrom(r)
+	_, err = buf.ReadFrom(r)
+	if err != nil {
+		t.Error("Unexpected error in ReadFrom ", err)
+	}
 	output := buf.String()
 
 	if !strings.Contains(output, "Test, Integration") {
@@ -136,8 +139,8 @@ path = "` + contactsDir + `"
 	}
 
 	originalHome := os.Getenv("HOME")
-	os.Setenv("HOME", tempDir)
-	defer os.Setenv("HOME", originalHome)
+	t.Setenv("HOME", tempDir)
+	defer t.Setenv("HOME", originalHome)
 
 	cfg, err := config.Load()
 	if err != nil {
@@ -159,7 +162,10 @@ path = "` + contactsDir + `"
 	os.Stdout = old
 
 	var buf bytes.Buffer
-	buf.ReadFrom(r)
+	_, err = buf.ReadFrom(r)
+	if err != nil {
+		t.Error("Unexpected error in ReadFrom ", err)
+	}
 	output := buf.String()
 
 	// Should contain header
@@ -247,8 +253,8 @@ path = "` + contactsDir + `"
 	}
 
 	originalHome := os.Getenv("HOME")
-	os.Setenv("HOME", tempDir)
-	defer os.Setenv("HOME", originalHome)
+	t.Setenv("HOME", tempDir)
+	defer t.Setenv("HOME", originalHome)
 
 	cfg, err := config.Load()
 	if err != nil {

@@ -919,7 +919,10 @@ func TestListBirthdays(t *testing.T) {
 		os.Stdout = old
 
 		var buf bytes.Buffer
-		buf.ReadFrom(r)
+		_, err = buf.ReadFrom(r)
+		if err != nil {
+			t.Error("Unexpected error in ReadFrom ", err)
+		}
 		output := buf.String()
 
 		// Verify header is present
@@ -961,7 +964,10 @@ func TestListBirthdays(t *testing.T) {
 		os.Stdout = old
 
 		var buf bytes.Buffer
-		buf.ReadFrom(r)
+		_, err = buf.ReadFrom(r)
+		if err != nil {
+			t.Error("Unexpected error in ReadFrom ", err)
+		}
 		output := buf.String()
 
 		// Should work exactly like PrintBirthdays
@@ -1204,7 +1210,10 @@ func TestPrintBirthdays(t *testing.T) {
 		os.Stdout = old
 
 		var buf bytes.Buffer
-		buf.ReadFrom(r)
+		_, err = buf.ReadFrom(r)
+		if err != nil {
+			t.Error("Unexpected error in ReadFrom ", err)
+		}
 		output := buf.String()
 
 		// Verify header is present
@@ -1251,7 +1260,10 @@ func TestPrintBirthdays(t *testing.T) {
 		os.Stdout = old
 
 		var buf bytes.Buffer
-		buf.ReadFrom(r)
+		_, err = buf.ReadFrom(r)
+		if err != nil {
+			t.Error("Unexpected error in ReadFrom ", err)
+		}
 		output := buf.String()
 
 		// Should display message about no contacts found

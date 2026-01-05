@@ -104,8 +104,8 @@ path = "` + workDir + `"
 	}
 
 	originalHome := os.Getenv("HOME")
-	os.Setenv("HOME", tempDir)
-	defer os.Setenv("HOME", originalHome)
+	t.Setenv("HOME", tempDir)
+	defer t.Setenv("HOME", originalHome)
 
 	config, err := Load()
 	if err != nil {
@@ -137,8 +137,8 @@ func TestLoadConfigFileNotFound(t *testing.T) {
 	tempDir := t.TempDir()
 
 	originalHome := os.Getenv("HOME")
-	os.Setenv("HOME", tempDir)
-	defer os.Setenv("HOME", originalHome)
+	t.Setenv("HOME", tempDir)
+	defer t.Setenv("HOME", originalHome)
 
 	_, err := Load()
 	if err == nil {
@@ -268,8 +268,8 @@ func TestValidateConfig(t *testing.T) {
 		}
 
 		originalHome := os.Getenv("HOME")
-		os.Setenv("HOME", tempDir)
-		defer os.Setenv("HOME", originalHome)
+		t.Setenv("HOME", tempDir)
+		defer t.Setenv("HOME", originalHome)
 
 		config := &Config{
 			AddressBooks: map[string]AddressBook{
@@ -303,8 +303,8 @@ path = "/nonexistent/path"
 		}
 
 		originalHome := os.Getenv("HOME")
-		os.Setenv("HOME", tempDir)
-		defer os.Setenv("HOME", originalHome)
+		t.Setenv("HOME", tempDir)
+		defer t.Setenv("HOME", originalHome)
 
 		_, err = Load()
 		if err == nil {
@@ -341,8 +341,8 @@ path = "` + contactsDir + `"
 		}
 
 		originalHome := os.Getenv("HOME")
-		os.Setenv("HOME", tempDir)
-		defer os.Setenv("HOME", originalHome)
+		t.Setenv("HOME", tempDir)
+		defer t.Setenv("HOME", originalHome)
 
 		config, err := Load()
 		if err != nil {
