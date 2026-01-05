@@ -5,7 +5,7 @@ env:
 builds:
   - binary: ghard
     id: ghard
-    main: ./
+    main: ./cmd/ghard/main.go
     ldflags:
       - -X main.Version={{ .Version }}
     targets:
