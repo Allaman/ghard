@@ -1,6 +1,6 @@
 <h1 align="center">ghard</h1>
-
 <div align="center">
+  <img width="256" height="256" alt="gopher" src="https://github.com/user-attachments/assets/e2caaa83-f1c2-44fe-acb1-9cc2dc43f11f" />
   <p>
     <img src="https://github.com/Allaman/ghard/actions/workflows/release.yaml/badge.svg" alt="Release"/>
     <img src="https://github.com/Allaman/ghard/actions/workflows/govulncheck.yaml/badge.svg" alt="Vulnerabilities"/>
