@@ -18,8 +18,8 @@ github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davidmz/go-pageant v1.0.2 h1:bPblRCh5jGU+Uptpz6LgMZGD5hJoOt7otgT454WvHn0=
 github.com/davidmz/go-pageant v1.0.2/go.mod h1:P2EDDnMqIwG5Rrp05dTRITj9z2zpGcD9efWSkTNKLIE=
-github.com/emersion/go-vcard v0.0.0-20241024213814-c9703dde27ff h1:4N8wnS3f1hNHSmFD5zgFkWCyA4L1kCDkImPAtK7D6tg=
-github.com/emersion/go-vcard v0.0.0-20241024213814-c9703dde27ff/go.mod h1:HMJKR5wlh/ziNp+sHEDV2ltblO4JD2+IdDOWtGcQBTM=
+github.com/emersion/go-vcard v0.1.0 h1:1GN6X5Rc91nvefm0ODRCEmTLVsnXK1f7++Uj0FKo+n0=
+github.com/emersion/go-vcard v0.1.0/go.mod h1:HMJKR5wlh/ziNp+sHEDV2ltblO4JD2+IdDOWtGcQBTM=
 github.com/fatih/color v1.16.0 h1:zmkK9Ngbjj+K0yRhTVONQh1p/HknKYSlNT+vZCzyokM=
 github.com/fatih/color v1.16.0/go.mod h1:fL2Sau1YI5c0pdGEVCbKQbLXB6edEj1ZgiY4NijnWvE=
 github.com/go-fed/httpsig v1.1.0 h1:9M+hb0jkEICD8/cAiNqEB66R87tTINszBRTjwjQzWcI=
